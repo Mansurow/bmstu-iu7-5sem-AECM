@@ -362,15 +362,28 @@ void _start() {
 \clearpage
 
 \subsubsection*{Временные диаграммы}
-Временные диаграммы сигналов, соответствующих всем стадиям выполнения команды, обозначенной в тексте программы символом \#! (add x31, x31, x2) представлены на рисунке \ref{img:t5-modelsim}.
+Временные диаграммы сигналов, соответствующих всем стадиям выполнения команды, обозначенной в тексте программы символом \#! (add x31, x31, x2) c адресом \textit{80000010} представлены на рисунке \ref{img:t5-fetch} -- \ref{img:t5-alu}.
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.6\textheight]{img/t5-modelsim}
-	\caption{Временные диаграммы сигналов.}
-	\label{img:t5-modelsim}
+	\includegraphics[height=0.3\textheight]{img/t5-fetch}
+	\caption{Временные диаграммы сигналов выборки и диспетчеризации (Fetch \& Dispatch) с адресом 80000010.}
+	\label{img:t5-fetch}
 \end{figure}
 
-\clearpage
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\textheight]{img/t5-decode}
+	\caption{Временные диаграммы сигналов декодирование и планирование (Decode \& Issue) с адресом 80000010.}
+	\label{img:t5-decode}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\textheight]{img/t5-alu}
+	\caption{Временные диаграммы сигналов ALU с адресом 80000010.}
+	\label{img:t5-alu}
+\end{figure}
 
 \subsubsection*{Вывод и предложение по оптимизации}
 Как видно на трассе работы программы, представленной на рисунке \ref{img:t5-modelsim}, конфликты возникают из-за того, что данные загружаются в память тогда, когда уже готова выполниться операция сложения тех данных, которые загружаются. Из-за этого и возникают конфликты, так как нечего складывать, так как в памяти пока нет ничего. 
